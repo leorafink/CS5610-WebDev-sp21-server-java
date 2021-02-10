@@ -20,6 +20,11 @@ $createUserBtn.click(function(){
         role: $roleFld.val()
     }
     createUser(newUser)
+        username: $usernameFld.val("")
+        password: $passwordFld.val("")
+        firstname: $firstNameFld.val("")
+        lastname: $lastNameFld.val("")
+
 })
 
 
