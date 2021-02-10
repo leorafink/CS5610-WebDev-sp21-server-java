@@ -5,6 +5,7 @@ var $lastNameFld
 var $roleFld
 var $createUserBtn
 var theTableBody
+var userService = new AdminUserServiceClient()
 
 /*$createUserBtn.click(() => {
     var newUser = {
@@ -49,17 +50,28 @@ function deleteUser(event){
     console.log(event.target)
     var deleteBtn = jQuery(event.target)
     var theClass = deleteBtn.attr("class")
-    var theID = deleteBtn.attr("id")
+    var theIndex = deleteBtn.attr("id")
+    var theId = users[theIndex]._id
     console.log(theClass)
-    console.log(theID)
-    users.splice(theID, 1)
-    renderUsers(users)
+    console.log(theIndex)
+
+    userService.deleteUser(theId)
+        .then(function (status){
+            users.splice(theIndex, 1)
+            renderUsers(users)
+        })
+
+
 }
 
 
 function createUser(user) {
-    users.push(user)
-    renderUsers(users)
+    userService.createUser(user)
+        .then(function (actualUser) {
+            users.push(actualUser)
+            renderUsers(users)
+        })
+
 }
 
 //createUser({username: "joe", password: "", firstname: "Joe", lastname: "Berry", role: "Student"})
@@ -115,6 +127,12 @@ function main() {
     })
 
     theTableBody = jQuery("tbody")
+
+    userService.findAllUsers()
+        .then(function (actualUsersFromServer) {
+            users = actualUsersFromServer
+            renderUsers(users)
+        })
 }
 
 jQuery(main)
