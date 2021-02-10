@@ -1,8 +1,28 @@
-var addUserBtn = jQuery("#wbdv-create")
+/*var addUserBtn = jQuery("#wbdv-create")
 
 addUserBtn.click(function (){
     createUser({username: "NEWCOURSE", password: "", firstname: "Ada", lastname: "Lovelace", role: "Faculty"})
+})*/
+
+var $usernameFld = $("#wbdv-usernameFld")
+var $passwordFld = $("#wbdv-passwordFld")
+var $firstNameFld = $("#wbdv-firstNameFld")
+var $lastNameFld = $("#wbdv-lastNameFld")
+var $roleFld = $("#wbdv-roleFld")
+var $createUserBtn = jQuery("#wbdv-create")
+
+$createUserBtn.click(function(){
+    var newUser = {
+        username: $usernameFld.val(),
+        password: $passwordFld.val(),
+        firstname: $firstNameFld.val(),
+        lastname: $lastNameFld.val(),
+        role: $roleFld.val()
+    }
+    createUser(newUser)
 })
+
+
 
 /*function addUser() {
     createUser({
@@ -25,9 +45,6 @@ var users = [
     {username: "dan", password: "", firstname: "Dan", lastname: "Fruit", role: "Student"}
 ];
 
-/*var theHeading = jQuery("h1#the-user-admin-heading")
-theHeading
-.css("background-color", "blue")*/
 
 var theTableBody = jQuery("tbody")
 
@@ -72,3 +89,4 @@ function renderUsers(users) {
 }
 
 renderUsers(users)
+
