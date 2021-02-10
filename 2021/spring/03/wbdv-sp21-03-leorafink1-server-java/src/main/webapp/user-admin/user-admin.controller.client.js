@@ -46,6 +46,17 @@ var users = [
     // {username: "dan", password: "", firstname: "Dan", lastname: "Fruit", role: "Student"}
 ];
 
+function editUser(event) {
+    var editBtn = jQuery(event.target)
+    var theId = editBtn.attr("id")
+    var theUser = users.find(user => user._id === theId)
+    $usernameFld.val(theUser.username)
+    $passwordFld.val(theUser.password)
+    $firstNameFld.val(theUser.firstname)
+    $lastNameFld.val(theUser.lastname)
+    $roleFld.val(theUser.role)
+}
+
 function deleteUser(event){
     console.log(event.target)
     var deleteBtn = jQuery(event.target)
@@ -91,13 +102,14 @@ function renderUsers(users) {
                     <td class="wbdv-actions">
                 <span class="pull-right">
                      <i class="fa-2x fa fa-times wbdv-remove" id="${i}"></i>
-                     <i class="fa-2x fa fa-pencil wbdv-edit"></i>
+                     <i class="fa-2x fa fa-pencil wbdv-edit" id="${user._id}"></i>
                 </span>
                     </td>
                 </tr>`
         )
     }
     jQuery(".wbdv-remove").click(deleteUser)
+    jQuery(".wbdv-edit").click(editUser)
 }
 
 //renderUsers(users)
