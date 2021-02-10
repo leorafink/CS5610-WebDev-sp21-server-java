@@ -5,6 +5,7 @@ var $lastNameFld
 var $roleFld
 var $createUserBtn
 var theTableBody
+var $updateBtn
 var userService = new AdminUserServiceClient()
 
 /*$createUserBtn.click(() => {
@@ -46,15 +47,16 @@ var users = [
     // {username: "dan", password: "", firstname: "Dan", lastname: "Fruit", role: "Student"}
 ];
 
+var selectedUser = null
 function editUser(event) {
     var editBtn = jQuery(event.target)
     var theId = editBtn.attr("id")
-    var theUser = users.find(user => user._id === theId)
-    $usernameFld.val(theUser.username)
-    $passwordFld.val(theUser.password)
-    $firstNameFld.val(theUser.firstname)
-    $lastNameFld.val(theUser.lastname)
-    $roleFld.val(theUser.role)
+    selectedUser = users.find(user => user._id === theId)
+    $usernameFld.val(selectedUser.username)
+    $passwordFld.val(selectedUser.password)
+    $firstNameFld.val(selectedUser.firstname)
+    $lastNameFld.val(selectedUser.lastname)
+    $roleFld.val(selectedUser.role)
 }
 
 function deleteUser(event){
@@ -114,6 +116,20 @@ function renderUsers(users) {
 
 //renderUsers(users)
 
+function updateUser(){
+    selectedUser.username = $usernameFld.val()
+    selectedUser.password = $passwordFld.val()
+    selectedUser.firstname = $firstNameFld.val()
+    selectedUser.lastname = $lastNameFld.val()
+    selectedUser.role = $roleFld.val()
+    userService.updateUser(selectedUser._id, selectedUser)
+        .then(function (status) {
+            var index = users.findIndex(user => user._id === selectedUser._id)
+            users[index] = selectedUser
+            renderUsers(users)
+        })
+}
+
 function main() {
     $usernameFld = $("#wbdv-usernameFld")
     $passwordFld = $("#wbdv-passwordFld")
@@ -121,6 +137,9 @@ function main() {
     $lastNameFld = $("#wbdv-lastNameFld")
     $roleFld = $("#wbdv-roleFld")
     $createUserBtn = jQuery("#wbdv-create")
+    $updateBtn = $("#wbdv-update")
+
+    $updateBtn.click(updateUser)
 
     $createUserBtn.click(() => {
         var newUser = {
