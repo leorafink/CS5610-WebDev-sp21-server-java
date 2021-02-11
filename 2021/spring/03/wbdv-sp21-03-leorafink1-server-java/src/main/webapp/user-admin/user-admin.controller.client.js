@@ -8,44 +8,8 @@ var theTableBody
 var $updateBtn
 var userService = new AdminUserServiceClient()
 
-/*$createUserBtn.click(() => {
-    var newUser = {
-        username: $usernameFld.val(),
-        password: $passwordFld.val(),
-        firstname: $firstNameFld.val(),
-        lastname: $lastNameFld.val(),
-        role: $roleFld.val()
-    }
-    createUser(newUser)
-        $usernameFld.val("")
-        $passwordFld.val("")
-        $firstNameFld.val("")
-        $lastNameFld.val("")
 
-})*/
-
-
-
-/*function addUser() {
-    createUser({
-        username: "NEWUSER",
-        password: "",
-        firstname: "Joe",
-        lastname: "Berry",
-        role: "Student"
-    })
-}
-
-addUserBtn.click(addUser())*/
-
-var users = [
-    // {username: "ada", password: "", firstname: "Ada", lastname: "Lovelace", role: "Faculty"},
-    // {username: "emily", password: "", firstname: "Emily", lastname: "Apple", role: "Faculty"},
-    // {username: "brian", password: "", firstname: "Brian", lastname: "Orange", role: "Student"},
-    // {username: "nate", password: "", firstname: "Nate", lastname: "Banana", role: "Student"},
-    // {username: "kelly", password: "", firstname: "Kelly", lastname: "Strawberry", role: "Faculty"},
-    // {username: "dan", password: "", firstname: "Dan", lastname: "Fruit", role: "Student"}
-];
+var users = [];
 
 var selectedUser = null
 function editUser(event) {
@@ -60,7 +24,6 @@ function editUser(event) {
 }
 
 function deleteUser(event){
-    console.log(event.target)
     var deleteBtn = jQuery(event.target)
     var theClass = deleteBtn.attr("class")
     var theIndex = deleteBtn.attr("id")
@@ -87,8 +50,6 @@ function createUser(user) {
 
 }
 
-//createUser({username: "joe", password: "", firstname: "Joe", lastname: "Berry", role: "Student"})
-
 function renderUsers(users) {
     theTableBody.empty()
     for (var i = 0; i < users.length; i++) {
@@ -113,8 +74,6 @@ function renderUsers(users) {
     jQuery(".wbdv-remove").click(deleteUser)
     jQuery(".wbdv-edit").click(editUser)
 }
-
-//renderUsers(users)
 
 function updateUser(){
     selectedUser.username = $usernameFld.val()
