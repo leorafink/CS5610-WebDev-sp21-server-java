@@ -1,0 +1,23 @@
+.LF-WebDevHeader {
+    background-color: gray;
+    color: white;
+    padding: 5px;
+}
+
+.LF-ModuleTabs {
+    background-color: DimGrey;
+    padding: 4px;
+
+}
+
+.LF-ModuleTabs2{
+    background-color: gray;
+    color: white;
+    margin: 3px;
+    padding 2px;
+}
+
+.LF-TopicPills {
+    background-color: gray;
+    color: white;
+}

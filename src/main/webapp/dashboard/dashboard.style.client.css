@@ -1,0 +1,22 @@
+
+@media only screen and (max-width: 768px) {
+  .LF-disappear {
+    display: none;
+  }
+}
+
+.LF-overallBackground {
+    background-color: whiteSmoke;
+}
+
+.LF-titleBar {
+    background-color: whiteSmoke;
+    margin: 5px;
+    padding: 2px;
+}
+
+.LF-mainContent {
+    background: white;
+    margin: 3px;
+    padding: 10px;
+}
