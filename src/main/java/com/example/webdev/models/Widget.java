@@ -6,6 +6,16 @@ public class Widget {
     private Integer size;
     private String text;
 
+    public String getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
+    }
+
+    private String topicId;
+
     private String name;
     private Integer widgetOrder;
     private String url;
@@ -15,8 +25,9 @@ public class Widget {
     private String style;
     private String value;
 
-    public Widget(Long id, String type, Integer size, String text) {
+    public Widget(Long id, String topicId, String type, Integer size, String text) {
         this.id = id;
+        this.topicId = topicId;
         this.type = type;
         this.size = size;
         this.text = text;
