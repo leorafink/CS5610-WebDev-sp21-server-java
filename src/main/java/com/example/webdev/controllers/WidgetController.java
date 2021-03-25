@@ -44,4 +44,11 @@ public class WidgetController {
             @PathVariable("wid") Long id) {
             return service.deleteWidget(id);
     }
+
+    @PutMapping("/api/widgets/{wid}")
+    public Integer updateWidget (
+            @PathVariable("wid") Long id,
+            @RequestBody Widget widget){
+        return service.updateWidget(id, widget);
+    }
 }
