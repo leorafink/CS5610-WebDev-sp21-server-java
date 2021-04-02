@@ -66,9 +66,10 @@ public class WidgetService {
 //        return null;
 //    }
 
-    public Integer updateWidget(Long id, Widget widget) {
+    public Integer updateWidget(Long id, Widget newWidget) {
         Widget originalWidget = findWidgetById(id);
-        originalWidget.setText(widget.getText());
+        originalWidget.setText(newWidget.getText());
+        originalWidget.setSrc(newWidget.getSrc());
         repository.save(originalWidget);
         return 1;
 //        int index = -1;
