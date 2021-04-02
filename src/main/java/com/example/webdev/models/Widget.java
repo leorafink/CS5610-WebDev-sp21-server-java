@@ -22,6 +22,26 @@ public class Widget {
     private String cssClass;
     private String style;
     private String value;
+    private Boolean ordered;
+    private String src;
+
+    public Boolean getOrdered() {
+        return ordered;
+    }
+
+    public void setOrdered(Boolean ordered) {
+        this.ordered = ordered;
+    }
+
+    public String getSrc() {
+        return src;
+    }
+
+    public void setSrc(String src) {
+        this.src = src;
+    }
+
+
 
     public Widget(Long id, String topicId, String type, Integer size, String text) {
         this.id = id;
