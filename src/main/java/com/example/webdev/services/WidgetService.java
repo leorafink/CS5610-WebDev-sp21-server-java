@@ -1,6 +1,8 @@
 package com.example.webdev.services;
 
 import com.example.webdev.models.Widget;
+import com.example.webdev.repositories.WidgetRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,6 +11,10 @@ import java.util.List;
 
 @Service
 public class WidgetService {
+
+    @Autowired
+    WidgetRepository repository;
+
     private List<Widget> widgets = new ArrayList<Widget>();
     {
         Widget w1 = new Widget(123L, "ABC123","HEADING", 1, "Welcome to widgets");
@@ -30,8 +36,11 @@ public class WidgetService {
     }
 
     public List<Widget> findAllWidgets() {
-        return widgets;
+        return repository.findAllWidgets();
+      //  return (List<Widget>) repository.findAll();
+        //return widgets;
     }
+
     public List<Widget> findWidgetsForTopic(String topicId) {
         List<Widget> ws = new ArrayList<Widget>();
         for(Widget w: widgets) {
@@ -44,13 +53,16 @@ public class WidgetService {
 
 
     public Widget findWidgetById(Long id) {
-        for(Widget w: widgets) {
-            if(w.getId().equals(id)) {
-                return w;
-            }
-        }
-        return null;
+       return repository.findAllWidgetById(id);
+        // return repository.findById(id).get();
     }
+//        for(Widget w: widgets) {
+//            if(w.getId().equals(id)) {
+//                return w;
+//            }
+//        }
+//        return null;
+//    }
 
     public Integer updateWidget(Long id, Widget widget) {
         int index = -1;

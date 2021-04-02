@@ -1,19 +1,17 @@
 package com.example.webdev.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="widgets")
 public class Widget {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String type;
     private Integer size;
     private String text;
-
-    public String getTopicId() {
-        return topicId;
-    }
-
-    public void setTopicId(String topicId) {
-        this.topicId = topicId;
-    }
-
     private String topicId;
 
     private String name;
@@ -32,6 +30,21 @@ public class Widget {
         this.size = size;
         this.text = text;
     }
+
+    public Widget() {
+
+    }
+
+    public String getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
+    }
+
+
+
 
     public Long getId() {
         return id;
@@ -73,3 +86,38 @@ public class Widget {
         this.name = name;
     }
 }
+
+
+//    create table widget (
+//        id bigint not null,
+//        css_class varchar(255),
+//    height integer,
+//    name varchar(255),
+//    size integer,
+//    style varchar(255),
+//    text varchar(255),
+//    topic_id varchar(255),
+//    type varchar(255),
+//    url varchar(255),
+//    value varchar(255),
+//    widget_order integer,
+//    width integer,
+//    primary key (id)
+//    ) engine=InnoDB
+
+//    create table widgets (
+//        id bigint not null auto_increment,
+//        css_class varchar(255),
+//    height integer,
+//    name varchar(255),
+//    size integer,
+//    style varchar(255),
+//    text varchar(255),
+//    topic_id varchar(255),
+//    type varchar(255),
+//    url varchar(255),
+//    value varchar(255),
+//    widget_order integer,
+//    width integer,
+//    primary key (id)
+//    ) engine=InnoDB
